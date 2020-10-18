@@ -10,28 +10,19 @@ package br.com.fiap.batch.model;
 public class AlunoDTO {
 	
 	private String nome;
-	private Integer rm;
+	private String rm;
 	private String cpf;
 	
-	public AlunoDTO() {
-	}
-	
-	public AlunoDTO(String nome, Integer rm, String cpf) {
-		super();
-		this.nome = nome;
-		this.rm = rm;
-		this.cpf = cpf;
-	}
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Integer getRm() {
+	public String getRm() {
 		return rm;
 	}
-	public void setRm(Integer rm) {
+	public void setRm(String rm) {
 		this.rm = rm;
 	}
 	public String getCpf() {
@@ -39,6 +30,16 @@ public class AlunoDTO {
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Aluno {"
+				+ "nome'" + nome+ "'"
+				+ "rm='" + rm + "'"
+				+ "cpf='" + cpf + "'"
+				+ "}";
 	}
 	
 	
