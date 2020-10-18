@@ -14,4 +14,3 @@ spring:
           
 file:
   chunk: lista_alunos.txt
-  path: /Users/lucasrodriguesdonascimento/Desktop/Spring Batch/batch/src/main/resources/lista_alunos.txt
