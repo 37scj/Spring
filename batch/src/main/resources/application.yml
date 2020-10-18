@@ -1,16 +1,13 @@
-server:
-  port: 8080
-
 spring:
   batch:
     initialize-schema: always
-    
+
   datasource:
-    #url: jdbc:h2:~/stockdbBatch;DB_CLOSE_ON_EXIT=FALSE
-    url: jdbc:mysql://localhost:3306/spring_batch?useUnicode=true&characterEnconding=UTF-8?useTimezone=true&serverTimezone=UTC
-    username: root
-    password: 30914182
-    
-          
+    url: jdbc:mysql://localhost:3306/credalunos_db?useUnicode=true&characterEnconding=UTF-8?useTimezone=true&serverTimezone=UTC
+    username: ucredalunos
+    password: cred_P_alunos_W__db_D
+  jpa:
+    show-sql: true
+
 file:
   chunk: lista_alunos.txt

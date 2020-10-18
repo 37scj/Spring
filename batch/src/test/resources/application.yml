@@ -1,0 +1,11 @@
+spring:
+  batch:
+    initialize-schema: embedded
+
+  datasource:
+    url: jdbc:h2:mem:batchDB;DB_CLOSE_ON_EXIT=FALSE
+  jpa:
+    show-sql: true
+
+file:
+  chunk: lista_alunos.txt

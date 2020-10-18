@@ -7,7 +7,7 @@ package br.com.fiap.batch.model;
  * @author lucasrodriguesdonascimento
  *
  */
-public class AlunoDTO {
+public class Aluno {
 	
 	private String nome;
 	private String rm;
