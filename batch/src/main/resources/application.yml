@@ -10,20 +10,8 @@ spring:
     url: jdbc:mysql://localhost:3306/spring_batch?useUnicode=true&characterEnconding=UTF-8?useTimezone=true&serverTimezone=UTC
     username: root
     password: 30914182
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create-drop
-      
-#  h2:
-#    console:
-#      path: /h2-console
-#      settings:
-#        trace: false
-#        web-allow-others: false
-#      enabled: true
-      
-      
+    
+          
 file:
   chunk: lista_alunos.txt
   path: /Users/lucasrodriguesdonascimento/Desktop/Spring Batch/batch/src/main/resources/lista_alunos.txt

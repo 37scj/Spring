@@ -4,6 +4,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,12 +24,13 @@ public class BatchStepConfiguration {
 	 * @return
 	 */
 	@Bean
-	public Step leituraArquivoLarguraFixa(ItemReader<AlunoDTO> leitor , ItemWriter<AlunoDTO> escritor){
+	public Step leituraArquivoLarguraFixa(ItemReader<AlunoDTO> leitor ,JdbcBatchItemWriter<AlunoDTO> databaseWriter){
 		return stepbuilderFactory
 				.get("leituraArquivoLarguraFixa")
 				.<AlunoDTO,AlunoDTO>chunk(1) //A cada item eu crio uma nova transacao 
 				.reader(leitor) //ler Arquivo
-				.writer(escritor) //apenas exibe os dados do arquivo / Persistir na base
+//				.writer(escritor) //apenas exibe os dados do arquivo 
+				.writer(databaseWriter) /// Persistir na base
 				.build();
 						
 	}
