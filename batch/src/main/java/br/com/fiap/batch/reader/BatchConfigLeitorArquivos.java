@@ -26,7 +26,7 @@ public class BatchConfigLeitorArquivos {
 				.name("leituraArquivo")
 				.resource(resource)
 				.fixedLength()
-				.columns(new Range[] {new Range(1, 41) , new Range(42, 50) , new Range(50,55)})
+				.columns(new Range[] {new Range(1, 41) , new Range(42, 49) , new Range(50,55)})
 				.names(new String [] {"nome" , "rm" , "cpf"})
 				.targetType(AlunoDTO.class)
 				.build();
