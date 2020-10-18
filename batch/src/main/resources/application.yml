@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  batch:
+    initialize-schema: always
+  datasource:
+    url: jdbc:h2:~/job;DB_CLOSE_ON_EXIT=FALSE
+    username: fiap
+    password: fiap
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+      
+  h2:
+    console:
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+      enabled: true
+      
+      
+file:
+  path: /Users/lucasrodriguesdonascimento/Desktop/Spring Batch/batch/src/main/resources/lista_alunos.txt
