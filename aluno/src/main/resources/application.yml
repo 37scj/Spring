@@ -11,4 +11,7 @@ spring:
     show-sql: true
 #    hibernate:
 #      ddl-auto: create-drop
-  
+flyway:
+  user: ucredalunos
+  password: cred_P_alunos_W__db_D
+  schemas: credalunos_db
