@@ -1,16 +1,17 @@
-package br.com.fiap.aluno.model;
+package br.com.fiap.aluno.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import br.com.fiap.aluno.dto.AlunoDTO;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "TB_ALUNO")
+@Getter @Setter
 public class Aluno {
 
 	@Id
@@ -32,23 +33,21 @@ public class Aluno {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Aluno(AlunoDTO saveAlunoDTO) {
-		if (saveAlunoDTO != null) {
-			this.setId(saveAlunoDTO.getId());
-			this.setNome(saveAlunoDTO.getNome());
-			this.setRm(saveAlunoDTO.getRm());
-			this.setCpf(saveAlunoDTO.getCpf());
-		}
-	}
-
 	public Aluno(String nome, String cpf, String rm) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.rm = rm;
 	}
-
-
+		
+	public Aluno(AlunoDTO alunoDTO) {
+		if (alunoDTO != null) {
+			this.setNome(alunoDTO.getNome());
+			this.setRm(alunoDTO.getRm());
+			this.setCpf(alunoDTO.getCpf());
+		}
+	}
+	
 	public Long getId() {
 		return id;
 	}

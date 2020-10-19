@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.fiap.aluno.dto.AlunoDTO;
-import br.com.fiap.aluno.model.Aluno;
+import br.com.fiap.aluno.entity.Aluno;
 import br.com.fiap.aluno.repository.AlunoRepository;
 import br.com.fiap.aluno.service.AlunoService;
 

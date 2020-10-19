@@ -41,7 +41,6 @@ public class AlunoController {
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public AlunoDTO addDrone(@RequestBody AlunoDTO aluno) {
-        aluno.setId(null);
         return alunoService.create(aluno);
     }
     

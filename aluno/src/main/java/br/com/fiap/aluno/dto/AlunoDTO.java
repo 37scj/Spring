@@ -1,12 +1,12 @@
 package br.com.fiap.aluno.dto;
 
-import br.com.fiap.aluno.model.Aluno;
+import java.io.Serializable;
+
+import br.com.fiap.aluno.entity.Aluno;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 @Getter
 @Setter

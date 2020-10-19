@@ -3,11 +3,14 @@ spring:
     initialize-schema: always
 
   datasource:
-    url: jdbc:mysql://localhost:3306/credalunos_db?useUnicode=true&characterEnconding=UTF-8?useTimezone=true&serverTimezone=UTC
-    username: ucredalunos
-    password: cred_P_alunos_W__db_D
+    url: jdbc:mysql://localhost:3306/credalunos_db?createDatabaseIfNotExist=true
+    username: root
+    password: 987654321
   jpa:
     show-sql: true
 
 file:
   chunk: lista_alunos.txt
+
+
+  
