@@ -1,6 +1,9 @@
 # Projeto Credito Aluno  
 
-    - Execute o modulo Batch para carregar a massa de dados
+    1 - Execute o modulo Batch para carregar a massa de dados
+    2 - Acesse a documentacao para ver os endpoints
+      - http://localhost:8081/swagger-ui/index.html
+           
   
   # Docker
   
