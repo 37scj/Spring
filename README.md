@@ -22,7 +22,9 @@
   # MYSQL 
   
     - porta 3306
-    - Portal web mysql : http://localhost:8081/?server=db&username=root
+    - Schema : credalunos_db
+    - Tabela : tb_aluno
+    - Portal web mysql : http://localhost:8081/?server=db
     
   # Swagger V3
     - http://localhost:8081/swagger-ui/index.html
