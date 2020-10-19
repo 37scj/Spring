@@ -13,36 +13,36 @@ A FIAP resolveu criar seu próprio cartão de crédito para ser utilizado pelos 
     RNF4 - Gerar uma massa simulada de transações.
     RNF5 - Documentação Swagger
       
-  # Instrução
+## Instrução
+
+1. Instale todas as dependencias do projeto
+2. Execute o modulo Batch para carregar a massa de dados
+3. Acesse a documentacao para ver os endpoints.
+
+## Docker:
+
+- Na raiz do projeto execute o arquivo docker-compose.yml
+ 
+      docker-compose up
     
-    1 - Instale todas as dependencias do projeto
-    2 - Execute o modulo Batch para carregar a massa de dados
-    3 - Acesse a documentacao para ver os endpoints.
-    
-  # Docker:
-  
-    - Na raiz do projeto execute o arquivo docker-compose.yml
-        - [COMANDO] docker-compose up
-        
-    - Se preferir pode criar schema e tabela manualmente (tb_aluno)
-    
-          create table TB_ALUNO
-          (
-              id   bigint auto_increment not null primary key,
-              nome varchar(100)          not null,
-              rm   varchar(20)           not null,
-              cpf  varchar(5)            not null
-          );
-  
-  # MySql:
-  
+- Se preferir pode criar schema e tabela manualmente (tb_aluno)
+
+      create table TB_ALUNO
+      (
+          id   bigint auto_increment not null primary key,
+          nome varchar(100)          not null,
+          rm   varchar(20)           not null,
+          cpf  varchar(5)            not null
+      );
+## MySql:
     - porta 3306
     - Schema : credalunos_db
     - Tabela : tb_aluno
     - Portal web mysql : http://localhost:8081/?server=db
-    
-  # Documentação:
+
+## Documentação:
   
+    Swagger Open API 3.0
     - http://localhost:8080/swagger-ui/index.html
 
 
