@@ -1,9 +1,5 @@
 # Projeto Credito Aluno  
   
- 
- 
-# Como utilizar
-
   # Docker
   
     - Na raiz do projeto execute o arquivo docker-compose.yml
