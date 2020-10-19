@@ -5,7 +5,7 @@
     - Na raiz do projeto execute o arquivo docker-compose.yml
         - [COMANDO] docker-compose up
         
-    - Se preferir pode criar schema e tabela na mao (tb_aluno)
+    - Se preferir pode criar schema e tabela manualmente (tb_aluno)
     
           create table TB_ALUNO
           (
