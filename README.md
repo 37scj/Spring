@@ -15,9 +15,9 @@ A FIAP resolveu criar seu próprio cartão de crédito para ser utilizado pelos 
     
     
     1 - Execute o modulo Batch para carregar a massa de dados
-    2 - Acesse a documentacao para ver os endpoints -> http://localhost:8081/swagger-ui/index.html
+    2 - Acesse a documentacao para ver os endpoints.
     
-  # Docker
+  # Docker:
   
     - Na raiz do projeto execute o arquivo docker-compose.yml
         - [COMANDO] docker-compose up
@@ -32,14 +32,14 @@ A FIAP resolveu criar seu próprio cartão de crédito para ser utilizado pelos 
               cpf  varchar(5)            not null
           );
   
-  # MySql 
+  # MySql:
   
     - porta 3306
     - Schema : credalunos_db
     - Tabela : tb_aluno
     - Portal web mysql : http://localhost:8081/?server=db
     
-  # Swagger V3
+  # Documentação:
     - http://localhost:8081/swagger-ui/index.html
 
 
