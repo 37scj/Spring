@@ -15,7 +15,7 @@
               cpf  varchar(5)            not null
           );
   
-  # MYSQL 
+  # MySql 
   
     - porta 3306
     - Schema : credalunos_db
