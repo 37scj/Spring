@@ -32,7 +32,7 @@ public class AlunoImpl implements AlunoService{
 	}
 
 	@Override
-	public List<AlunoDTO> findAllDrone() {
+	public List<AlunoDTO> findAll() {
 		return alunoRepository.findAll().stream().map(AlunoDTO::new).collect(Collectors.toList());
 	}
 

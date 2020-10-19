@@ -8,7 +8,7 @@ import br.com.fiap.aluno.dto.AlunoDTO;
 public interface AlunoService {
 	
 	AlunoDTO create(AlunoDTO alunoPresenter);
-    List<AlunoDTO> findAllDrone();
+    List<AlunoDTO> findAll();
     Optional<AlunoDTO> findById(Long id);
 	void deleteById(Long id);
 

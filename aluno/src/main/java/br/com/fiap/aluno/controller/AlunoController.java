@@ -63,7 +63,7 @@ public class AlunoController {
     @ApiOperation(value = "Lista todos alunos")
     @GetMapping()
     public List<AlunoDTO> getAll() {
-        return alunoService.findAllDrone();
+        return alunoService.findAll();
     }
     
   
