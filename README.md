@@ -1,4 +1,6 @@
 # Projeto Credito Aluno  
+
+    - Execute o modulo Batch para carregar a massa de dados
   
   # Docker
   
