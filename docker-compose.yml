@@ -11,10 +11,10 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     environment:
+      MYSQL_DATABASE: credalunos_db
       MYSQL_ROOT_PASSWORD: 987654321
       MYSQL_USER: ucredalunos
-      MYSQL_PASSWORD: cred_P_alunos_W__db_D
-      MYSQL_DATABASE: credalunos_db
+      MYSQL_PASSWORD: 987654321
 
   adminer:
     image: adminer

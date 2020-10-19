@@ -1,3 +1,5 @@
+use credalunos_db;
+
 create table TB_ALUNO
 (
     id   bigint auto_increment not null primary key,
