@@ -42,7 +42,8 @@ A FIAP resolveu criar seu próprio cartão de crédito para ser utilizado pelos 
     - Portal web mysql : http://localhost:8081/?server=db
     
   # Documentação:
-    - http://localhost:8081/swagger-ui/index.html
+  
+    - http://localhost:8080/swagger-ui/index.html
 
 
 
