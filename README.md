@@ -14,9 +14,10 @@ A FIAP resolveu criar seu próprio cartão de crédito para ser utilizado pelos 
     RNF5 - Documentação Swagger
       
   # Instrução
-  
-    1 - Execute o modulo Batch para carregar a massa de dados
-    2 - Acesse a documentacao para ver os endpoints.
+    
+    1 - Instale todas as dependencias do projeto
+    2 - Execute o modulo Batch para carregar a massa de dados
+    3 - Acesse a documentacao para ver os endpoints.
     
   # Docker:
   
