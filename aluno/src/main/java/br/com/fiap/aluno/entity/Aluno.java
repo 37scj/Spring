@@ -29,13 +29,6 @@ public class Aluno {
 	@Column
 	private String rm;
 
-	public Aluno(String nome, String cpf, String rm) {
-		super();
-		this.nome = nome;
-		this.cpf = cpf;
-		this.rm = rm;
-	}
-		
 	public Aluno(AlunoDTO alunoDTO) {
 		if (alunoDTO != null) {
 			this.setNome(alunoDTO.getNome());

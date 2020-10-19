@@ -1,4 +1,4 @@
-create table TB_ALUNO
+create table `TB_ALUNO`
 (
     id   bigint auto_increment not null primary key,
     nome varchar(100)          not null,

@@ -12,9 +12,9 @@ spring:
 #    hibernate:
 #      ddl-auto: validate
 
-  flyway:
-    url: jdbc:mysql://localhost:3306
-    schemas: credalunos_db
-    password: 987654321
-    enabled: true
-    user: root
+#  flyway:
+#    url: jdbc:mysql://localhost:3306
+#    schemas: credalunos_db
+#    password: 987654321
+#    enabled: true
+#    user: root
