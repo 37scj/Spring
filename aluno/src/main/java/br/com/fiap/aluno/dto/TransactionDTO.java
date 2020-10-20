@@ -6,15 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthorizationRequest implements Serializable {
+public class TransactionDTO implements Serializable {
 
-    private String rm;
-    private String cpf;
-    private String cardNumber;
+    private Long id;
+    private LocalDateTime data;
+    private Double valor;
+    private AlunoDTO aluno;
 
 }

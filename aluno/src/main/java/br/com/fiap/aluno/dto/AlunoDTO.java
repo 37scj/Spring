@@ -1,12 +1,12 @@
 package br.com.fiap.aluno.dto;
 
-import java.io.Serializable;
-
 import br.com.fiap.aluno.entity.Aluno;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -21,12 +21,12 @@ public class AlunoDTO implements Serializable {
     private String cpf;
     private String rm;
 
-    public AlunoDTO(Aluno saveAluno) {
-        if (saveAluno != null) {
-            this.id = saveAluno.getId();
-            this.nome = saveAluno.getNome();
-            this.rm = saveAluno.getRm();
-            this.cpf = saveAluno.getCpf();
+    public AlunoDTO(Aluno aluno) {
+        if (aluno != null) {
+            this.id = aluno.getId();
+            this.nome = aluno.getNome();
+            this.rm = aluno.getRm();
+            this.cpf = aluno.getCpf();
         }
     }
 

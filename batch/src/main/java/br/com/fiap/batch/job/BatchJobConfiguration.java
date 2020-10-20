@@ -93,7 +93,7 @@ public class BatchJobConfiguration {
     public JdbcBatchItemWriter<Aluno> databaseWriter(DataSource datasource) {
         return new JdbcBatchItemWriterBuilder<Aluno>()
                 .dataSource(datasource)
-                .sql("insert into TB_ALUNO (NOME, RM, CPF) values (:nome, :rm, :cpf)")
+                .sql("insert into tb_aluno (nome, rm, cpf) values (:nome, :rm, :cpf)")
                 .beanMapped()
                 .build();
     }
