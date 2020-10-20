@@ -46,7 +46,7 @@ class StudentBatchApplicationTests {
         assertEquals(BatchStatus.COMPLETED, run.getStatus());
 
         ResultSet resultSet = dataSource.getConnection()
-                .prepareStatement("select count(*) from TB_ALUNO")
+                .prepareStatement("select count(*) from tb_aluno")
                 .executeQuery();
         await().atMost(10, TimeUnit.SECONDS)
                 .until(() -> {
@@ -57,7 +57,7 @@ class StudentBatchApplicationTests {
         System.out.println(resultSet.getInt(1));
 
         ResultSet result = dataSource.getConnection()
-                .prepareStatement("select nome from TB_ALUNO")
+                .prepareStatement("select nome from tb_aluno")
                 .executeQuery();
         while(result.next()){
             System.out.println( result.getString(1) );

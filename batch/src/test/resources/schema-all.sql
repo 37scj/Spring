@@ -1,6 +1,6 @@
-drop table if exists TB_ALUNO;
+drop table if exists tb_aluno;
 
-create table TB_ALUNO
+create table tb_aluno
 (
     id   bigint auto_increment not null primary key,
     nome varchar(100)        not null,
