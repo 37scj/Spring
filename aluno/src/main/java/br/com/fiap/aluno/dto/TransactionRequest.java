@@ -7,10 +7,11 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+/**
+ * @author Gabriel Ribeiro
+ */
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class TransactionRequest implements Serializable {
 
     private String rm;

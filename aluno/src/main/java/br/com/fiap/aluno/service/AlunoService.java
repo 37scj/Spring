@@ -13,6 +13,8 @@ public interface AlunoService {
 
     Optional<AlunoDTO> findById(Long id);
 
+    Optional<AlunoDTO> findByRm(String rm);
+
     void deleteById(Long id);
 
 }

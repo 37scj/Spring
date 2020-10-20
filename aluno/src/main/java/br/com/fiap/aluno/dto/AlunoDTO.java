@@ -1,10 +1,7 @@
 package br.com.fiap.aluno.dto;
 
 import br.com.fiap.aluno.entity.Aluno;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -12,6 +9,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class AlunoDTO implements Serializable {
 
     private static final long serialVersionUID = -1541134953490160695L;
@@ -29,5 +27,4 @@ public class AlunoDTO implements Serializable {
             this.cpf = aluno.getCpf();
         }
     }
-
 }

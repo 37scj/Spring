@@ -12,7 +12,6 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_aluno")
 public class Aluno {
@@ -33,6 +32,13 @@ public class Aluno {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "aluno")
     private Set<Transaction> transactions;
+
+    public Aluno(Long id, String nome, String cpf, String rm) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.rm = rm;
+    }
 
     public Aluno(AlunoDTO alunoDTO) {
         if (alunoDTO != null) {

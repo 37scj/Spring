@@ -3,7 +3,6 @@ package br.com.fiap.aluno.controller;
 import br.com.fiap.aluno.dto.AlunoDTO;
 import br.com.fiap.aluno.service.AlunoService;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,9 +18,11 @@ import java.util.List;
 @RequestMapping("alunos")
 public class AlunoController {
 
-
-    @Autowired
     private AlunoService alunoService;
+
+    public AlunoController(AlunoService alunoService) {
+        this.alunoService = alunoService;
+    }
 
 
     /**
@@ -30,10 +31,10 @@ public class AlunoController {
      * @param aluno
      * @return
      */
-    @ApiOperation(value = "Cria um novo drone")
+    @ApiOperation(value = "Cria um novo aluno")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public AlunoDTO addDrone(@RequestBody AlunoDTO aluno) {
+    public AlunoDTO addAluno(@RequestBody AlunoDTO aluno) {
         return alunoService.create(aluno);
     }
 
@@ -70,7 +71,7 @@ public class AlunoController {
     @ApiOperation(value = "Exclui um aluno")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @DeleteMapping("/{id}")
-    public void deleteDrone(@PathVariable Long id) {
+    public void deleteAluno(@PathVariable Long id) {
         alunoService.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Aluno não encontrado (id: " + id.toString() + ")"));
         alunoService.deleteById(id);

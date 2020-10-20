@@ -40,10 +40,13 @@ public class AlunoImpl implements AlunoService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        alunoRepository.deleteById(id);
-
+    public Optional<AlunoDTO> findByRm(String rm) {
+        return alunoRepository.findByRm(rm).map(AlunoDTO::new);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        alunoRepository.deleteById(id);
+    }
 
 }

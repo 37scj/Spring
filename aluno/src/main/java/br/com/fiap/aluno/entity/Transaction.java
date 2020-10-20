@@ -9,6 +9,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * @author Gabriel Ribeiro
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,7 +25,7 @@ public class Transaction {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(columnDefinition = "ID_ALUNO")
+    @JoinColumn(name = "ID_ALUNO")
     private Aluno aluno;
 
     @Column
@@ -30,12 +33,5 @@ public class Transaction {
 
     @Column
     private LocalDateTime data;
-
-    public TransactionDTO toModel() {
-        return new TransactionDTO(getId(), getData(), getValor(), new AlunoDTO(getAluno()));
-    }
-    public TransactionDTO toModelWithoutAluno() {
-        return new TransactionDTO(getId(), getData(), getValor());
-    }
 
 }

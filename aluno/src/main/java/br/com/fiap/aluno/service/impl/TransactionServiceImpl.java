@@ -16,6 +16,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author Gabriel Ribeiro
+ */
 @Slf4j
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -45,7 +48,7 @@ public class TransactionServiceImpl implements TransactionService {
 
         auth = transactionRepository.save(auth);
 
-        return auth.toModel();
+        return new TransactionDTO(auth);
     }
 
     private void validateAluno(Aluno aluno, TransactionRequest transactionRequest) {
@@ -64,7 +67,7 @@ public class TransactionServiceImpl implements TransactionService {
     public List<TransactionDTO> findAll(){
         return transactionRepository.findAll()
                 .stream()
-                .map(Transaction::toModel)
+                .map(TransactionDTO::new)
                 .collect(Collectors.toList());
     }
 
