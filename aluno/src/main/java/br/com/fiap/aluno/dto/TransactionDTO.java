@@ -19,4 +19,9 @@ public class TransactionDTO implements Serializable {
     private Double valor;
     private AlunoDTO aluno;
 
+    public TransactionDTO(Long id, LocalDateTime data, Double valor) {
+        this.id = id;
+        this.data = data;
+        this.valor = valor;
+    }
 }

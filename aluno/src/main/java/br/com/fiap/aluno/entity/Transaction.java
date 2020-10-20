@@ -34,5 +34,8 @@ public class Transaction {
     public TransactionDTO toModel() {
         return new TransactionDTO(getId(), getData(), getValor(), new AlunoDTO(getAluno()));
     }
+    public TransactionDTO toModelWithoutAluno() {
+        return new TransactionDTO(getId(), getData(), getValor());
+    }
 
 }

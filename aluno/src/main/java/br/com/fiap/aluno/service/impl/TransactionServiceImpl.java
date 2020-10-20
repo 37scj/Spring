@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -29,10 +31,10 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public TransactionDTO validateTransaction(TransactionRequest transactionRequest) {
-        log.info("Verificando transação %s: %d" + transactionRequest.getRm(), transactionRequest.getValue().doubleValue());
+        log.info("Verificando transação " + transactionRequest.getRm() + ": " + transactionRequest.getValue().doubleValue());
         Aluno aluno = alunoRepository.findByRm(transactionRequest.getRm())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        log.info("Aluno encontrado %s", aluno.getNome());
+        log.info("Aluno encontrado " + aluno.getNome());
 
         validateAluno(aluno, transactionRequest);
 
@@ -56,6 +58,14 @@ public class TransactionServiceImpl implements TransactionService {
         if (transactionRequest.getValue().compareTo(Double.valueOf(0)) != 1) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor sem transação");
         }
+    }
+
+    @Override
+    public List<TransactionDTO> findAll(){
+        return transactionRepository.findAll()
+                .stream()
+                .map(Transaction::toModel)
+                .collect(Collectors.toList());
     }
 
 }
