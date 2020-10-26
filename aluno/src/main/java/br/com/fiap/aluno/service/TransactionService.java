@@ -11,4 +11,5 @@ public interface TransactionService {
 
     List<TransactionDTO> findAll();
 
+    List<TransactionDTO> findByDateBetween(String dateTimeBegin, String dateTimeEnd);
 }
