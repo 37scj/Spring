@@ -73,4 +73,36 @@ public class TransactionServiceImpl implements TransactionService {
 				.collect(Collectors.toList());
 	}
 
+    @Override
+    public List<TransactionDTO> findByDateBetween(String dateTimeBegin, String dateTimeEnd) {
+        LocalDateTime[] dateTimeList = validateAndConvertDate(dateTimeBegin, dateTimeEnd);
+
+
+        return transactionRepository.findAllByDataBetween(dateTimeList[0], dateTimeList[1])
+                .stream()
+                .map(TransactionDTO::new)
+                .collect(Collectors.toList());
+    }
+
+    private LocalDateTime[] validateAndConvertDate(String dateTimeBegin, String dateTimeEnd){
+        if(dateTimeBegin.isEmpty() || dateTimeBegin == null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Data de inicio inválida");
+        }
+
+        if(dateTimeEnd.isEmpty() || dateTimeEnd == null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Data de fim inválida");
+        }
+
+        LocalDateTime localDateTimeBegin = LocalDateTime.parse(dateTimeBegin);
+        LocalDateTime localDateTimeEnd = LocalDateTime.parse(dateTimeEnd);
+
+        LocalDateTime[] localDateTimes = new LocalDateTime[2];
+
+        localDateTimes[0] = localDateTimeBegin;
+        localDateTimes[1] = localDateTimeEnd;
+
+        return localDateTimes;
+    }
+
+
 }
