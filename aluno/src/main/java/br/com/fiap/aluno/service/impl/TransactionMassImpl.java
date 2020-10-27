@@ -26,7 +26,7 @@ public class TransactionMassImpl implements TransactionMassService{
 	}
 
 	/**
-	 * 
+	 * Metodo responsavel por receber a quantidade de vezes que sera gerada essa massa
 	 */
 	@Override
 	public Optional<AlunoDTO> findById(Long id , Integer transactionaAmount) {

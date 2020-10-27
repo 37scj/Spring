@@ -22,7 +22,9 @@ public class TransactionMass {
 	private TransactionMassService transactionMassService;
 
 	/**
-	 * Buscar aluno por ID
+	 * Metodo responsavel por buscar
+	 * aluno por id e processar um loop para
+	 * gerar massa de transacao de dados
 	 *
 	 * @param id
 	 * @return
