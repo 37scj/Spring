@@ -25,6 +25,10 @@ public class TransactionMassImpl implements TransactionMassService{
 		this.alunoRepository = alunoRepository;
 	}
 
+	/**
+	 * Metodo responsavel por gerar dados
+	 * de transacao para um usuario
+	 */
 	@Override
 	public String findById(Long id , Integer transactionaAmount) {
 
