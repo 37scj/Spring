@@ -1,13 +1,20 @@
 package br.com.fiap.aluno.entity;
 
-import br.com.fiap.aluno.dto.AlunoDTO;
-import br.com.fiap.aluno.dto.TransactionDTO;
+import java.time.LocalDateTime;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
 
 /**
  * @author Gabriel Ribeiro
@@ -33,5 +40,17 @@ public class Transaction {
 
     @Column
     private LocalDateTime data;
+    
+    
+
+	public Transaction(Long id, Aluno aluno, Double valor, LocalDateTime data) {
+		super();
+		this.id = id;
+		this.aluno = aluno;
+		this.valor = valor;
+		this.data = data;
+	}
+
+
 
 }

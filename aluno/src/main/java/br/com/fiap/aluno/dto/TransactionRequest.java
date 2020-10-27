@@ -1,11 +1,11 @@
 package br.com.fiap.aluno.dto;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.io.Serializable;
 
 /**
  * @author Gabriel Ribeiro

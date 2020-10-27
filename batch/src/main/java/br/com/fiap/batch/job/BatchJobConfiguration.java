@@ -1,8 +1,7 @@
 package br.com.fiap.batch.job;
 
-import br.com.fiap.batch.model.Aluno;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.sql.DataSource;
+
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -20,10 +19,9 @@ import org.springframework.batch.item.file.transform.Range;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 
-import javax.sql.DataSource;
+import br.com.fiap.batch.model.Aluno;
 
 /**
  * JobLauncher

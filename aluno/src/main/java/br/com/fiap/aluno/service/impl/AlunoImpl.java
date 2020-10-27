@@ -41,7 +41,7 @@ public class AlunoImpl implements AlunoService {
 
     @Override
     public Optional<AlunoDTO> findByRm(String rm) {
-        return alunoRepository.findByRm(rm).map(AlunoDTO::new);
+        return alunoRepository.findByRm(rm).map(AlunoDTO::new).stream().findFirst();
     }
 
     @Override
