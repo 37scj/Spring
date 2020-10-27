@@ -12,9 +12,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.fiap.aluno.dto.AlunoDTO;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tb_aluno")
+@Getter @Setter @AllArgsConstructor
 public class Aluno {
 
     @Id
@@ -38,14 +42,6 @@ public class Aluno {
 	public Aluno() {
 	}
 
-
-    public Aluno(Long id, String nome, String cpf, String rm, Set<Transaction> transactions) {
-		this.id = id;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.rm = rm;
-		this.transactions = transactions;
-	}
     
     public Aluno(String nome, String cpf, String rm) {
         this.nome = nome;
@@ -61,66 +57,5 @@ public class Aluno {
             this.setCpf(alunoDTO.getCpf());
         }
     }
-
-
-	public Long getId() {
-		return id;
-	}
-
-
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-
-
-	public String getNome() {
-		return nome;
-	}
-
-
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-
-	public String getCpf() {
-		return cpf;
-	}
-
-
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-
-
-	public String getRm() {
-		return rm;
-	}
-
-
-
-	public void setRm(String rm) {
-		this.rm = rm;
-	}
-
-
-
-	public Set<Transaction> getTransactions() {
-		return transactions;
-	}
-
-
-
-	public void setTransactions(Set<Transaction> transactions) {
-		this.transactions = transactions;
-	}
-	
-	
 
 }
