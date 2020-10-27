@@ -3,10 +3,10 @@ package br.com.fiap.aluno.service.impl;
 import java.util.Optional;
 import java.util.Random;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import br.com.fiap.aluno.dto.AlunoDTO;
-import br.com.fiap.aluno.dto.TransactionRequest;
+import br.com.fiap.aluno.dto.TransactionRequestDTO;
 import br.com.fiap.aluno.entity.Aluno;
 import br.com.fiap.aluno.repository.AlunoRepository;
 import br.com.fiap.aluno.service.TransactionMassService;
@@ -25,30 +25,20 @@ public class TransactionMassImpl implements TransactionMassService{
 		this.alunoRepository = alunoRepository;
 	}
 
-	/**
-	 * Metodo responsavel por receber a quantidade de vezes que sera gerada essa massa
-	 */
 	@Override
-	public Optional<AlunoDTO> findById(Long id , Integer transactionaAmount) {
-		if (id == null) {
-			return Optional.empty();
-		}else if(alunoRepository.findById(id).isPresent()) {
-			log.info("ALUNO RECUPERADO , ACIONANDO A INSERCAO DE MASSA DE DADOS : " + transactionaAmount);
+	public String findById(Long id , Integer transactionaAmount) {
 
-			try {
-				if(transactionaAmount != 0 && transactionaAmount != null) {
-					int i = 0;
-					i = inserirMassa(id, transactionaAmount, i);
-				}
-			}catch(Exception e) {
-				e.printStackTrace();
-				return Optional.empty();
+		log.info("ALUNO RECUPERADO , ACIONANDO A INSERCAO DE MASSA DE DADOS : " + transactionaAmount);
+		try {
+			if(transactionaAmount != 0 && transactionaAmount != null) {
+				inserirMassa(id, transactionaAmount);
+				return "OK"; 
 			}
-		}else {
-			return Optional.empty();
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-		return null;
-		
+
+		return "FAIL";
 	}
 
 	/**
@@ -58,10 +48,11 @@ public class TransactionMassImpl implements TransactionMassService{
 	 * @param i
 	 * @return
 	 */
-	private int inserirMassa(Long id, Integer transactionaAmount, int i) {
+	private int inserirMassa(Long id, Integer transactionaAmount) {
+		int i = 0;
 		while(i < transactionaAmount) {
 			Aluno aluno = alunoRepository.findById(id).get();
-			serviceImpl.validateTransaction(new TransactionRequest(aluno.getRm(),aluno.getCpf(), new Random().nextDouble()));
+			serviceImpl.transactionGenerate(new TransactionRequestDTO(aluno.getId(),aluno.getRm(),aluno.getCpf(), new Random().nextDouble()));
 			i++;
 		}
 		return i;

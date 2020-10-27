@@ -12,7 +12,7 @@ import br.com.fiap.aluno.entity.Transaction;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
-	@Query(value = "select new br.com.fiap.aluno.entity.Aluno (alunos.cpf , alunos.nome , alunos.rm) from Aluno alunos where alunos.rm = ?1")
+	@Query(value = "select new br.com.fiap.aluno.entity.Aluno (alunos.nome , alunos.cpf , alunos.rm) from Aluno alunos where alunos.rm = ?1")
 	Optional<Aluno> findByRm(String rm);
 
 	List<Transaction> findAllByDataBetween(LocalDateTime beginDate, LocalDateTime endDate);

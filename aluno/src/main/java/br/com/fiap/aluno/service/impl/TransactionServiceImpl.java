@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.fiap.aluno.dto.TransactionDTO;
 import br.com.fiap.aluno.dto.TransactionRequest;
+import br.com.fiap.aluno.dto.TransactionRequestDTO;
 import br.com.fiap.aluno.entity.Aluno;
 import br.com.fiap.aluno.entity.Transaction;
 import br.com.fiap.aluno.repository.AlunoRepository;
@@ -38,7 +39,7 @@ public class TransactionServiceImpl implements TransactionService {
 	@Override
 	public TransactionDTO validateTransaction(TransactionRequest transactionRequest) {
 		log.info("Verificando transação " + transactionRequest.getRm() + ": " + transactionRequest.getValue().doubleValue());
-		Aluno aluno = transactionRepository.findByRm(transactionRequest.getRm())
+		Aluno aluno = alunoRepository.findByRm(transactionRequest.getRm())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		
 		log.info("Aluno encontrado " + aluno.getNome());
@@ -54,6 +55,31 @@ public class TransactionServiceImpl implements TransactionService {
 
 		return new TransactionDTO(auth);
 	}
+	
+	
+	/**
+	 * Metodo responsavel criar a massa de dados
+	 * @param transactionRequest
+	 * @return
+	 */
+	public TransactionDTO transactionGenerate(TransactionRequestDTO transactionRequest) {
+		log.info("Verificando transação " + transactionRequest.getRm() + ": " + transactionRequest.getValue().doubleValue());
+		Aluno aluno = transactionRepository.findByRm(transactionRequest.getRm())
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		
+		log.info("Aluno encontrado " + aluno.getNome());
+
+		Transaction auth = new Transaction();
+		aluno.setId(transactionRequest.getId());
+		auth.setAluno(aluno);
+		auth.setData(LocalDateTime.now());
+		auth.setValor(transactionRequest.getValue());
+
+		auth = transactionRepository.save(auth);
+
+		return new TransactionDTO(auth);
+	}
+	
 
 	private void validateAluno(Aluno aluno, TransactionRequest transactionRequest) {
 		if (!aluno.getRm().equals(transactionRequest.getRm())) {

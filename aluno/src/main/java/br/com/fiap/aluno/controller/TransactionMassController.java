@@ -2,20 +2,19 @@ package br.com.fiap.aluno.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
-import br.com.fiap.aluno.dto.AlunoDTO;
 import br.com.fiap.aluno.service.TransactionMassService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("transacao")
-public class TransactionMass {
+public class TransactionMassController {
 
 
 	@Autowired
@@ -31,9 +30,15 @@ public class TransactionMass {
 	 */
 	@ApiOperation(value = "Busca informações de um aluno")
 	@GetMapping("/{id}")
-	public AlunoDTO getById(@PathVariable Long id, @RequestParam(name = "amount" , required = false) Integer transactionaAmount) {
-		return transactionMassService.findById(id,transactionaAmount).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-				"Aluno não encontrado (id: " + id.toString() + ")"));
+	public ResponseEntity<?> getById(@PathVariable Long id, @RequestParam(name = "amount" , required = false) Integer transactionaAmount) {
+		String status = transactionMassService.findById(id, transactionaAmount);
+		
+		if(status.equals("OK")) {
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(status);
+		}else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha");
+		}
+
 	}
 
 

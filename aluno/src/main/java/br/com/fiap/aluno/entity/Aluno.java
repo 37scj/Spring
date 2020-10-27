@@ -34,27 +34,33 @@ public class Aluno {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "aluno")
     private Set<Transaction> transactions;
 
+
+	public Aluno() {
+	}
+
+
+    public Aluno(Long id, String nome, String cpf, String rm, Set<Transaction> transactions) {
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.rm = rm;
+		this.transactions = transactions;
+	}
+    
     public Aluno(String nome, String cpf, String rm) {
         this.nome = nome;
         this.cpf = cpf;
         this.rm = rm;
     }
-    
-    
+   
 
-    public Aluno(AlunoDTO alunoDTO) {
+	public Aluno(AlunoDTO alunoDTO) {
         if (alunoDTO != null) {
             this.setNome(alunoDTO.getNome());
             this.setRm(alunoDTO.getRm());
             this.setCpf(alunoDTO.getCpf());
         }
     }
-
-
-
-	public Aluno() {
-	}
-
 
 
 	public Long getId() {

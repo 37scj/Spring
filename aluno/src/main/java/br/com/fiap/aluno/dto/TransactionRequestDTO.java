@@ -7,14 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- * @author Gabriel Ribeiro
- */
+
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
-public class TransactionRequest implements Serializable {
+public class TransactionRequestDTO implements Serializable {
 
     
+	private Long id;
 	private String rm;
     private String cpf;
     private Double value;
