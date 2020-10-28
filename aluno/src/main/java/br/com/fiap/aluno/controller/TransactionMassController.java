@@ -30,9 +30,8 @@ public class TransactionMassController {
 	 * @return
 	 */
 	@ApiOperation(value = "Geracao de massa de dados por id de usuario")
-	@ApiParam(value="adicionar a quantidade de loop para gerar a massa de dados")
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getById(@PathVariable Long id, @RequestParam(name = "amount" , required = false) Integer transactionaAmount) {
+	public ResponseEntity<?> getById(@ApiParam(value="Adicionar o id do usuario") @PathVariable Long id, @ApiParam(value="Adicionar a quantidade de vezes que deseja gerar transacao") @RequestParam(name = "amount" , required = true) Integer transactionaAmount){
 		String status = transactionMassService.findById(id, transactionaAmount);
 		
 		if(status.equals("OK")) {
