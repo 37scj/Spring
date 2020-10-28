@@ -8,6 +8,10 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
+import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -16,12 +20,14 @@ import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilde
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.transform.Range;
+import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 
 import br.com.fiap.batch.model.Aluno;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  * JobLauncher
@@ -82,11 +88,6 @@ public class BatchJobConfiguration {
         };
     }
 
-//    @Bean
-//    public ItemWriter<Aluno> leituraArquivoLarguraFixaWriter() {
-//        Logger log = LoggerFactory.getLogger("Batch");
-//        return indice -> indice.forEach(a -> log.info(a.toString()));
-//    }
     @Bean
     public JdbcBatchItemWriter<Aluno> databaseWriter(DataSource datasource) {
         return new JdbcBatchItemWriterBuilder<Aluno>()
@@ -99,7 +100,7 @@ public class BatchJobConfiguration {
     /**
      * Metodo reponsavel por realizar os steps do Job
      */
-    @Bean
+    @Bean("lerArquivoLarguraFixa")
     public Step leituraArquivoLarguraFixa(StepBuilderFactory stepbuilderFactory,
                                           ItemReader<Aluno> leitor,
                                           ItemWriter<Aluno> writer,
@@ -111,6 +112,14 @@ public class BatchJobConfiguration {
                 .processor(processor)
                 .writer(writer) /// Persistir na base
                 .build();
+    }
+
+    @Bean
+    public Tasklet dropTableTasklet(DataSource dataSource) {
+        return (contribution, chunkContext) -> {
+            new JdbcTemplate(dataSource).execute("delete from tb_aluno");
+            return RepeatStatus.FINISHED;
+        };
     }
 
     /**

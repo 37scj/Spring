@@ -64,7 +64,7 @@ public class TransactionServiceImpl implements TransactionService {
 	 */
 	public TransactionDTO transactionGenerate(TransactionRequestDTO transactionRequest) {
 		log.info("Verificando transação " + transactionRequest.getRm() + ": " + transactionRequest.getValue().doubleValue());
-		Aluno aluno = transactionRepository.findByRm(transactionRequest.getRm())
+		Aluno aluno = alunoRepository.findByRm(transactionRequest.getRm())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		
 		log.info("Aluno encontrado " + aluno.getNome());
